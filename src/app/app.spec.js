@@ -1,17 +1,15 @@
 describe( 'AppCtrl', function() {
-  describe( 'isCurrentUrl', function() {
-    var AppCtrl, $location, $scope;
+    beforeEach(module('pmtViewer'));
+    var AppCtrl, scope;
 
-    beforeEach( module( 'pmtViewer' ) );
-
-    beforeEach( inject( function( $controller, _$location_, $rootScope ) {
-      $location = _$location_;
-      $scope = $rootScope.$new();
-      AppCtrl = $controller( 'AppCtrl', { $location: $location, $scope: $scope });
+    beforeEach(inject(function ($rootScope, $controller) {
+        scope = $rootScope.$new();
+        AppCtrl = $controller('AppCtrl', {
+            $scope: scope
+        });
     }));
 
-    it( 'should pass a dummy test', inject( function() {
-      expect( AppCtrl ).toBeDefined();
-    }));
-  });
+    it('should be defined', function () {
+        expect(AppCtrl).toBeDefined();
+    });
 });

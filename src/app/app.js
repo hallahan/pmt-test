@@ -13,7 +13,8 @@ angular.module( 'pmtViewer', [
 .run( function run () {
 })
 
-.controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
+.controller('AppCtrl', function AppCtrl($scope, $location) {
+  $scope.greeting = 'Hello World!';
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
     if ( angular.isDefined( toState.data.pageTitle ) ) {
       $scope.pageTitle = toState.data.pageTitle + ' | PMT' ;
