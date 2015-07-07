@@ -13,6 +13,8 @@ vendor/
 src/*.suo
 src/*.sln
 src/*.njsproj
+src/.ntvs_analysis.dat
 ./src/*.suo
 ./src/*.sln
 ./src/*.njsproj
+./src/.ntvs_analysis.dat
