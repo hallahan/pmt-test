@@ -19,24 +19,7 @@ $ grunt watch
 
 Finally, open `file:///path/to/pmt-test/build/index.html` in your browser.
 
-Happy hacking!
-
-## Purpose
-
-`pmt-test` it contains a best-practice directory structure to ensure code 
-reusability and maximum scalability, based on ngBroilerplate structure.
-pmt-test uses the most popular design frameworks
-around: [Twitter Bootstrap](http://getbootstrap.com),
-[Angular UI](http://angular-ui.github.io),
-[Angular Bootstrap](http://angular-ui.github.io/bootstrap),
-[Font Awesome](http://fortawesome.github.com/Font-Awesome), and
-[LESS](http://lesscss.org). Lastly, it contains a sophisticated
-[Grunt](http://gruntjs.org)-based build system to ensure maximum productivity.
-
-
-## Learn
-
-### Overall Directory Structure
+## Overall Directory Structure
 
 At a high level, the structure looks roughly like this:
 
