@@ -1,4 +1,4 @@
-# [pmt-test](http://shawnaparadee.github.com/pmt-test) [![Build Status](https://api.travis-ci.org/shawnaparadee/pmt-test.svg)](https://travis-ci.org/shawnaparadee/pmt-test)
+# [pmt-test](http://shawnaparadee.github.com/pmt-test) [![Build Status](https://travis-ci.org/shawnaparadee/pmt-test.svg?branch=master)](https://travis-ci.org/shawnaparadee/pmt-test)
 
 An kickstarter for an [AngularJS](http://angularjs.org) PMT project.
 
