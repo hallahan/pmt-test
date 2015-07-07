@@ -38,8 +38,7 @@ angular.module( 'pmtViewer.login', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'LoginCtrl', function LoginController( $scope ) {
-})
-
-;
+.controller('LoginCtrl', function LoginController($scope) {
+    $scope.username = 'tester';
+});
 
