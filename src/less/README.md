@@ -6,11 +6,11 @@ other stylesheets must be *imported* into that one.
 
 This should operate somewhat like the routing; the `main.less` file contains all of the site-wide styles, while
 any styles that are route-specific should be imported into here from LESS files kept alongside the JavaScript
-and HTML sources of that component. For example, the `home` section of the site has some custom styles, which
+and HTML sources of that component. For example, the `login` section of the site has some custom styles, which
 are imported like so:
 
 ```css
-@import '../app/home/home.less';
+@import '../app/login/login.less';
 ```
 
 The same principal, though not demonstrated in the code, would also apply to reusable components. CSS or LESS

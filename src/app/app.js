@@ -1,13 +1,13 @@
-angular.module( 'ngBoilerplate', [
+angular.module( 'pmtViewer', [
   'templates-app',
   'templates-common',
-  'ngBoilerplate.home',
-  'ngBoilerplate.about',
+  'pmtViewer.login',
+  'pmtViewer.about',
   'ui.router'
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
-  $urlRouterProvider.otherwise( '/home' );
+  $urlRouterProvider.otherwise( '/login' );
 })
 
 .run( function run () {
@@ -16,7 +16,7 @@ angular.module( 'ngBoilerplate', [
 .controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
     if ( angular.isDefined( toState.data.pageTitle ) ) {
-      $scope.pageTitle = toState.data.pageTitle + ' | ngBoilerplate' ;
+      $scope.pageTitle = toState.data.pageTitle + ' | PMTv' ;
     }
   });
 })

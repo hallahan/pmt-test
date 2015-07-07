@@ -1,26 +1,26 @@
-# The `src/app/home` Directory
+# The `src/app/login` Directory
 
 ## Overview
 
 ```
 src/
   |- app/
-  |  |- home/
-  |  |  |- home.js
-  |  |  |- home.less
-  |  |  |- home.spec.js
-  |  |  |- home.tpl.html
+  |  |- login/
+  |  |  |- login.js
+  |  |  |- login.less
+  |  |  |- login.spec.js
+  |  |  |- login.tpl.html
 ```
 
-- `home.js` - defines the module.
-- `home.less` - module-specific styles; this file is imported into
+- `login.js` - defines the module.
+- `login.less` - module-specific styles; this file is imported into
   `src/less/main.less` manually by the developer.
-- `home.spec.js` - module unit tests.
-- `home.tpl.html` - the route template.
+- `login.spec.js` - module unit tests.
+- `login.tpl.html` - the route template.
 
-## `home.js`
+## `login.js`
 
-This boilerplate is too simple to demonstrate it, but `src/app/home` could have
+This boilerplate is too simple to demonstrate it, but `src/app/login` could have
 several sub-folders representing additional modules that would then be listed
 as dependencies of this one.  For example, a `note` section could have the
 submodules `note.create`, `note.delete`, `note.search`, etc.
@@ -32,7 +32,7 @@ The dependencies block is also where component dependencies should be
 specified, as shown below.
 
 ```js
-angular.module( 'ngBoilerplate.home', [
+angular.module( 'pmtViewer.login', [
   'ui.router',
   'titleService',
   'plusOne'
@@ -42,7 +42,7 @@ angular.module( 'ngBoilerplate.home', [
 Each section or module of the site can also have its own routes. AngularJS will
 handle ensuring they are all available at run-time, but splitting it this way
 makes each module more self-contained. We use [ui-router](https://github.com/angular-ui/ui-router) to create
-a state for our 'home' page. We set the url we'd like to see in the address bar
+a state for our 'login' page. We set the url we'd like to see in the address bar
 as well as the controller and template file to load. Specifying "main" as our view
 means the controller and template will be loaded into the <div ui-view="main"/> element
 of the root template (aka index.html). Read more over at the [ui-router wiki](https://github.com/angular-ui/ui-router/wiki).
@@ -51,15 +51,15 @@ title (see the app.js controller).
 
 ```js
 .config(function config( $stateProvider ) {
-  $stateProvider.state( 'home', {
-    url: '/home',
+  $stateProvider.state( 'login', {
+    url: '/login',
     views: {
       "main": {
-        controller: 'HomeCtrl',
-        templateUrl: 'home/home.tpl.html'
+        controller: 'loginCtrl',
+        templateUrl: 'login/login.tpl.html'
       }
     },
-    data:{ pageTitle: 'Home' }
+    data:{ pageTitle: 'login' }
   });
 })
 ```
@@ -68,6 +68,6 @@ And of course we define a controller for our route, though in this case it does
 nothing.
 
 ```js
-.controller( 'HomeCtrl', function HomeController( $scope ) {
+.controller( 'loginCtrl', function loginController( $scope ) {
 })
 ```
