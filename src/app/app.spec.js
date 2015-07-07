@@ -9,7 +9,7 @@ describe( 'AppCtrl', function() {
         });
     }));
 
-    it('should be defined', function () {
-        expect(AppCtrl).toBeDefined();
+    it('should have a greeing', function () {
+        expect(scope.greeting).toBeDefined();
     });
 });
