@@ -13,3 +13,6 @@ vendor/
 src/*.suo
 src/*.sln
 src/*.njsproj
+./src/*.suo
+./src/*.sln
+./src/*.njsproj
