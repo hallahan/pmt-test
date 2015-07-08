@@ -1,9 +1,9 @@
-<div class="jumbotron">
-    <h1>Login Page</h1>
+<div class="jumbotron" ng-controller="LoginCtrl">
+    <h1>{{login.title}}</h1>
 
     <p class="lead">
-        Login here to the Portfolio Managment Tool (PMT). This is an AngularJS 
-        application, using a modular framework approach. 
+        Login here to the Portfolio Managment Tool (PMT). This is an AngularJS
+        application, using a modular framework approach.
     </p>
     <div class="container">
         <form class="form-login">
@@ -13,7 +13,7 @@
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
             <a ui-sref="about" class="btn btn-large btn-primary">Sign in</a>
-</form>
+        </form>
     </div>
 
     <ul class="list-inline social-buttons">
@@ -39,5 +39,5 @@
                     style="width:130px; height:20px;"></iframe>
         </li>
         <li plus-one></li>
-    </ul>  
+    </ul>
 </div>

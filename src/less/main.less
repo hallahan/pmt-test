@@ -25,12 +25,6 @@
  * Typography
  */
 
-/*@font-face {
-  font-family: 'Oswald';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Oswald Regular'), local('Oswald-Regular'), url(fonts/Oswald-Regular.woff) format('woff');
-}*/
 
 code, pre, .pre {
   padding: 5px;
@@ -115,9 +109,12 @@ h2 {
 /**
  * Now that all app-wide styles have been applied, we can load the styles for
  * all the submodules and components we are using. 
- *
- * TODO: In a later version of this boilerplate, I'd like to automate this.
  */
 
-@import '../app/login/login.less';
+@import '../app/login/less/login.less';
 
+/**
+ * Last but not least, the theme is applied
+ */
+
+@import 'spatialdev-theme.less';
