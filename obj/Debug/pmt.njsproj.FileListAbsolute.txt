@@ -1,2 +1,0 @@
-C:\Users\Shawna\Documents\GitHub\pmt-test\obj\Debug\pmt.njsprojResolveAssemblyReference.cache
-C:\Users\Shawna\Documents\GitHub\pmt-test\bin\Microsoft.NodejsTools.WebRole.dll

@@ -39,7 +39,7 @@ angular.module( 'pmtViewer.login', [
  * And of course we define a controller for our route.
  */
 .controller('LoginCtrl', function LoginController($scope, $http) {
-    $http.get('config/login.js')
+    $http.get('/src/app/login/config/login.js')
         .success(function (data, status, headers, config) {
     // this callback will be called asynchronously
     // when the response is available
