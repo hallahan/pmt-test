@@ -13,9 +13,9 @@ describe('Contoller: AppCtrl', function () {
         $controller('AppCtrl', { '$rootScope' : $rootScope, '$scope': $scope });
     }));
     
-    it('should have a defined theme alias', function () {
-        expect($rootScope.config.theme.alias).toBeDefined();
-    });
+    it('should have a defined theme alias', inject(function (config) {
+        expect(config.theme.alias).toBeDefined();
+    }));
 
     it('should have a defined theme name', function () {
         expect($rootScope.config.theme.name).toBeDefined();
