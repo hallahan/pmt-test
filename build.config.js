@@ -66,9 +66,15 @@ module.exports = {
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
       'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
       'vendor/angular-ui-router/release/angular-ui-router.js',
-      'vendor/angular-ui-utils/modules/route/route.js'
+      'vendor/angular-ui-utils/modules/route/route.js',
+      'vendor/leaflet/dist/leaflet.js',
+      'vendor/jquery/dist/jquery.min.js',
+      'vendor/Chart.js/Chart.min.js',
+      'vendor/angular-chart.js/dist/angular-chart.min.js'
     ],
     css: [
+      'vendor/leaflet/dist/leaflet.css',
+      'vendor/angular-chart.js/dist/angular-chart.css'
     ],
     assets: [
     ]

@@ -1,14 +1,24 @@
-/**
- * Tests sit right alongside the file they are testing, which is more intuitive
- * and portable than separating `src` and `test` directories. Additionally, the
- * build process will exclude all `.spec.js` files from the build
- * automatically.
- */
-describe( 'login section', function() {
-  beforeEach( module( 'pmtViewer.login' ) );
 
-  it( 'should have a dummy test', inject( function() {
-    expect( true ).toBeTruthy();
-  }));
+describe('Controller: LoginCtrl', function () {
+    var $rootScope, $scope, $controller;
+
+  beforeEach( module( 'pmtViewer.login' ) );
+    
+    beforeEach(inject(function (_$rootScope_, _$controller_) {
+        $rootScope = _$rootScope_;
+        $scope = $rootScope.$new();
+        $controller = _$controller_;
+        
+        $controller('LoginCtrl', { '$rootScope' : $rootScope, '$scope': $scope });
+    }));
+
+    it('should have a defined title', function () {
+        expect($rootScope.config.login.title).toBeDefined();
+    });
+
+    it('should have a defined sub-title', function () {
+        expect($rootScope.config.login.subtitle).toBeDefined();
+    });
+
 });
 

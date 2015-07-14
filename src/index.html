@@ -4,15 +4,9 @@
     <title ng-bind="pageTitle"></title>
 
     <!-- social media tags -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@joshdmiller">
-    <meta name="twitter:title" content="pmtViewer">
-    <meta name="twitter:description" content="Non-Trivial AngularJS Made Easy: Everything you need to kickstart AngularJS projects: a best-practice directory structure, an intelligent build system, and the best web design libraries around.">
-    <meta name="twitter:creator" content="@joshdmiller">
-    <meta name="twitter:image:src" content="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/Octocat.png?1366128846">
     <meta property="og:title" content="pmtViewer" />
     <meta property="og:type" content="website" />
-      <meta property="og:url" content="http://shawnaparadee.github.io/" />
+    <meta property="og:url" content="http://shawnaparadee.github.io/" />
     <meta property="og:image" content="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/Octocat.png?1366128846" />
     <meta property="og:description" content="What?!?.">
 
@@ -31,6 +25,7 @@
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
       { "parsetags": "explicit" }
     </script>
+
   </head>
   <body>
     <div class="container">
@@ -46,7 +41,7 @@
           <div class="navbar-brand">
             PMTv
             <small>
-              <a href="http://github.com/shawnaparadee/pmt-test/blob/v<%= version %>-release/CHANGELOG.md">
+                <a href="{{global.gitrepo}}/blob/v<%= version %>-release/CHANGELOG.md">
                 v<%= version %>
               </a>
             </small>
@@ -67,22 +62,22 @@
               </a>
             </li>
             <li>
-              <a href="https://github.com/shawnaparadee/pmt-test#readme">
-                <i class="fa fa-book"></i>
-                Read the Docs
-              </a>
+                <a href="{{global.gitrepo}}#readme">
+                    <i class="fa fa-book"></i>
+                    Read the Docs
+                </a>
             </li>
             <li>
-              <a href="https://github.com/shawnaparadee/pmt-test">
-                <i class="fa fa-github-alt"></i>
-                Github
-              </a>
+                <a href="{{global.gitrepo}}">
+                    <i class="fa fa-github-alt"></i>
+                    Github
+                </a>
             </li>
             <li>
-              <a href="https://github.com/shawnaparadee/pmt-test/issues">
-                <i class="fa fa-comments"></i>
-                Support
-              </a>
+                <a href="{{global.gitrepo}}/issues">
+                    <i class="fa fa-comments"></i>
+                    Log an Issue
+                </a>
             </li>
           </ul>
         </div>
@@ -95,14 +90,14 @@
       <div class="container">
         <div class="footer-inner">
           <ul class="social">
-            <li><a target="_blank" href="https://plus.google.com/112965145498262825170/"><i class="fa fa-google-plus-square"></i></a></li>
-            <li><a target="_blank" href="http://twitter.com/spatialdev"><i class="fa fa-twitter-square"></i></a></li>
-            <li><a target="_blank" href="http://linkedin.com/company/spatial-development-international"><i class="fa fa-linkedin-square"></i></a></li>
-            <li><a target="_blank" href="http://github.com/spatialdev"><i class="fa fa-github-square"></i></a></li>
+            <li><a target="_blank" href="{{config.links.socialmedia.google}}" ng-hide="config.links.socialmedia.google == ''"><i class="fa fa-google-plus-square"></i></a></li>
+            <li><a target="_blank" href="{{config.links.socialmedia.twitter}}" ng-hide="config.links.socialmedia.twitter == ''"><i class="fa fa-twitter-square"></i></a></li>
+            <li><a target="_blank" href="{{config.links.socialmedia.linkedin}}" ng-hide="config.links.socialmedia.linkedin == ''"><i class="fa fa-linkedin-square"></i></a></li>
+            <li><a target="_blank" href="{{config.links.socialmedia.github}}" ng-hide="config.links.socialmedia.github == ''"><i class="fa fa-github-square"></i></a></li>
           </ul>          
           <p>
-            (c) 2015 <a href="http://www.spatialdev.com">Spatial Development International, LLC</a>. 
-              <a href="https://github.com/shawnaparadee/pmt-test/fork_select">Fork this</a>
+            (c) 2015 <a href="{{config.theme.url}}">{{config.theme.name}}</a>. 
+              <a href="{{global.gitrepo}}/fork_select">Fork this</a>
             to kickstart your portfolio managment tool (PMT) project.
             <br />
             PMT is based on

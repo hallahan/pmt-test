@@ -1,0 +1,39 @@
+
+<div class="row" ng-controller="InfoSpatialdevCtrl">
+    <div class="col-lg-3">
+        <img src="http://spatialdev.com/img/beast.png" height="400" />
+        <img src="http://spatialdev.com/img/logo.png" />
+    </div>
+    <div class="col-lg-9">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <carousel interval="myInterval">
+                    <slide ng-repeat="slide in slides" active="slide.active">
+                        <img ng-src="{{slide.image}}">
+                        <div class="carousel-caption">
+                            Project: {{slide.text}}
+                        </div>
+                    </slide>
+                </carousel>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="boarder-line"></div>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ultrices, libero in varius pulvinar,
+                magna magna vulputate quam, vel accumsan felis quam ac sem. Pellentesque mollis ultricies risus,
+                sed eleifend nunc accumsan non. Suspendisse ut interdum nunc, sed pharetra nulla. Cum sociis
+                natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam ut imperdiet
+                felis, eu pellentesque massa. Pellentesque tempus consectetur quam id egestas. Etiam pretium,
+                turpis non malesuada faucibus, ligula erat scelerisque nulla, quis pellentesque nunc eros quis
+                sapien. Phasellus eu nibh tincidunt, euismod est in, bibendum magna. Proin faucibus neque at risus
+                euismod fermentum. Nulla pharetra sem quam, quis vehicula nulla facilisis eget. Donec gravida commodo
+                ex vel pharetra. Donec in consectetur dolor. Duis aliquet porta nisi, vel aliquam ante pellentesque
+                quis.
+            </p>
+        </div>
+    </div>
+</div>
+

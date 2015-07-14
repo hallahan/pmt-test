@@ -4,6 +4,9 @@
  * the Grunt configuration that is automatically processed.
  */
 
+// this is the default theme, but will be overidden when using the --theme parameter
+// on build
+@theme: 'spatialdev';
 
 /**
  * First, we include the Twitter Bootstrap LESS files. Only the ones used in the
@@ -112,9 +115,11 @@ h2 {
  */
 
 @import '../app/login/less/login.less';
+@import '../app/about/less/about.less';
 
 /**
- * Last but not least, the theme is applied
+ * Last but not least, apply a theme
+ * Themes must follow this naming convension to be picked up on the build
  */
 
-@import 'spatialdev-theme.less';
+@import "themes/@{theme}-theme.less";

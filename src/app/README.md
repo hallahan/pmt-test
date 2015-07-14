@@ -9,6 +9,7 @@ src/
   |  |- about/
   |  |- app.js
   |  |- app.spec.js
+  |  |- config.js
 ```
 
 The `src/app` directory contains all code specific to this application. Apart
@@ -22,9 +23,6 @@ route `/products`, though this is in no way enforced. Products may then have
 subdirectories for "create", "view", "search", etc. The "view" submodule may
 then define a route of `/products/:id`, ad infinitum.
 
-As `pmtViewer` is quite minimal, take a look at the two provided submodules
-to gain a better understanding of how these are used as well as to get a
-glimpse of how powerful this simple construct can be.
 
 ## `app.js`
 
@@ -85,6 +83,15 @@ not specific to the template or route, such as menu logic or page title wiring.
   });
 })
 ```
+
+## `config.js`
+
+This is the configuration file. The configuration file contains all the theme 
+specific data (i.e. social media links, client business name, business url). The
+build process requires a theme be specified so that it know's which configuration
+file to build. All configuration files should contain the exact same objects,
+however depending on the theme, certain elements may be empty. The config.js
+is build from the app.config.js using grunt.
 
 ### Testing
 

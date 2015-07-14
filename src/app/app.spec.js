@@ -1,15 +1,30 @@
-describe('AppCtrl', function () {
-    //var AppCtrl, $location, $scope;
+
+describe('Contoller: AppCtrl', function () {
+    var $rootScope, $scope, $controller;
     
-    //beforeEach(module('pmtViewer'));
+    beforeEach(module('pmtViewer'));
     
-    //beforeEach(inject(function ($controller, _$location_, $rootScope) {
-    //    $location = _$location_;
-    //    $scope = $rootScope.$new();
-    //    AppCtrl = $controller('AppCtrl', { $location: $location, $scope: $scope });
-    //}));
+    beforeEach(inject(function (_$rootScope_, _$controller_) {
+        $rootScope = _$rootScope_;
+        $scope = $rootScope.$new();
+        $controller = _$controller_;
+        
+        $controller('AppCtrl', { '$rootScope' : $rootScope, '$scope': $scope });
+    }));
     
-    //it('should pass a dummy test', function () {
-    //    expect(AppCtrl).toBeUndefined();
-    //});
+    it('should have a defined theme alias', function () {
+        expect($rootScope.config.theme.alias).toBeDefined();
+    });
+
+    it('should have a defined theme name', function () {
+        expect($rootScope.config.theme.name).toBeDefined();
+    });
+
+    it('should have a defined theme url', function () {
+        expect($rootScope.config.theme.name).toBeDefined();
+    });
+
+    it('should have a defined github url', function () {
+        expect($rootScope.config.links.socialmedia.github).toBeDefined();
+    });
 });
