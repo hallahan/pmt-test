@@ -3,7 +3,10 @@ describe('Contoller: AppCtrl', function () {
     var $rootScope, $scope, $controller, config;
     
     beforeEach(module('pmtViewer'));
-    beforeEach(module('config'));
+        
+    beforeEach(function () {
+        module("config");
+    });
     
     beforeEach(inject(function (_$rootScope_, _$controller_) {
         $rootScope = _$rootScope_;
@@ -13,9 +16,11 @@ describe('Contoller: AppCtrl', function () {
         $controller('AppCtrl', { '$rootScope' : $rootScope, '$scope': $scope });
     }));
     
-    it('should have a defined theme alias', inject(function (config) {
-        expect(config.theme.alias).toBeDefined();
-    }));
+    describe("constants", function () {
+        it('should have a defined theme alias', inject(function (config) {
+            expect(config.theme.alias).toBeDefined();
+        }));
+    });
 
     it('should have a defined theme name', function () {
         expect($rootScope.config.theme.name).toBeDefined();
