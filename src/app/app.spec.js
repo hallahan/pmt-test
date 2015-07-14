@@ -1,6 +1,6 @@
 
 describe('Contoller: AppCtrl', function () {
-    var $rootScope, $scope, $controller;
+    var $rootScope, $scope, $controller, config;
     
     beforeEach(module('pmtViewer'));
     beforeEach(module('config'));
