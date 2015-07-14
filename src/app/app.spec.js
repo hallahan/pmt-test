@@ -14,18 +14,18 @@ describe('Contoller: AppCtrl', function () {
     }));
     
     it('should have a defined theme alias', function () {
-        expect($scope.config.theme.alias).toBeDefined();
+        expect($rootScope.config.theme.alias).toBeDefined();
     });
 
     it('should have a defined theme name', function () {
-        expect($scope.config.theme.name).toBeDefined();
+        expect($rootScope.config.theme.name).toBeDefined();
     });
 
     it('should have a defined theme url', function () {
-        expect($scope.config.theme.name).toBeDefined();
+        expect($rootScope.config.theme.name).toBeDefined();
     });
 
     it('should have a defined github url', function () {
-        expect($scope.config.links.socialmedia.github).toBeDefined();
+        expect($rootScope.config.links.socialmedia.github).toBeDefined();
     });
 });
