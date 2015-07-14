@@ -12,19 +12,19 @@ describe('Contoller: AppCtrl', function () {
         $controller('AppCtrl', { '$rootScope' : $rootScope, '$scope': $scope });
     }));
     
-    it('should have a defined theme alias', function () {
-        expect($rootScope.config.theme.alias).toBeDefined();
-    });
+    //it('should have a defined theme alias', function () {
+    //    expect($rootScope.config.theme.alias).toBeDefined();
+    //});
 
-    it('should have a defined theme name', function () {
-        expect($rootScope.config.theme.name).toBeDefined();
-    });
+    //it('should have a defined theme name', function () {
+    //    expect($rootScope.config.theme.name).toBeDefined();
+    //});
 
-    it('should have a defined theme url', function () {
-        expect($rootScope.config.theme.name).toBeDefined();
-    });
+    //it('should have a defined theme url', function () {
+    //    expect($rootScope.config.theme.name).toBeDefined();
+    //});
 
-    it('should have a defined github url', function () {
-        expect($rootScope.config.links.socialmedia.github).toBeDefined();
-    });
+    //it('should have a defined github url', function () {
+    //    expect($rootScope.config.links.socialmedia.github).toBeDefined();
+    //});
 });
