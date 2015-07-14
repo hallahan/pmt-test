@@ -16,8 +16,8 @@ angular.module('pmtViewer', [
 
 // include the config & global constants from the config module
 .controller('AppCtrl', function AppCtrl($scope, $location, $rootScope, config, global) {
-    $rootScope.config = config;  // add the config constat to the rootScope variable
-    $rootScope.global = global;  // add the global constat to the rootScope variable
+    $scope.config = config;  // add the config constat to the rootScope variable
+    $scope.global = global;  // add the global constat to the rootScope variable
 
     $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
         if (angular.isDefined(toState.data.pageTitle)) {
