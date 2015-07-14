@@ -3,6 +3,7 @@ describe('Contoller: AppCtrl', function () {
     var $rootScope, $scope, $controller;
     
     beforeEach(module('pmtViewer'));
+    beforeEach(module('config'));
     
     beforeEach(inject(function (_$rootScope_, _$controller_) {
         $rootScope = _$rootScope_;
