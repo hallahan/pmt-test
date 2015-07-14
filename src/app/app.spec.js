@@ -1,12 +1,8 @@
 
 describe('Contoller: AppCtrl', function () {
-    var $rootScope, $scope, $controller, config;
+    var $rootScope, $scope, $controller;
     
     beforeEach(module('pmtViewer'));
-        
-    beforeEach(function () {
-        module("config");
-    });
     
     beforeEach(inject(function (_$rootScope_, _$controller_) {
         $rootScope = _$rootScope_;
@@ -16,21 +12,4 @@ describe('Contoller: AppCtrl', function () {
         $controller('AppCtrl', { '$rootScope' : $rootScope, '$scope': $scope });
     }));
     
-    describe("constants", function () {
-        it('should have a defined theme alias', inject(function (config) {
-            expect(config.theme.alias).toBeDefined();
-        }));
-    });
-
-    it('should have a defined theme name', function () {
-        expect($rootScope.config.theme.name).toBeDefined();
-    });
-
-    it('should have a defined theme url', function () {
-        expect($rootScope.config.theme.name).toBeDefined();
-    });
-
-    it('should have a defined github url', function () {
-        expect($rootScope.config.links.socialmedia.github).toBeDefined();
-    });
 });
