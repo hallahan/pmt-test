@@ -4,6 +4,9 @@ module.exports = function (grunt) {
      * cooresponding theme target in the app.config file
      */
     var theme = grunt.option('theme');
+    if (!theme){
+        theme = 'spatialdev';
+    }
 
     /** 
      * Load required Grunt tasks. These are installed based on the versions listed
