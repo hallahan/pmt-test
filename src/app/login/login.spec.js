@@ -21,11 +21,11 @@ describe('Controller: LoginCtrl', function () {
     });
     
     it('should have a defined theme url', function () {
-        expect($rootScope.config.theme.name).toBeDefined();
+        expect($rootScope.config.theme.url).toBeDefined();
     });
     
-    it('should have a defined github url', function () {
-        expect($rootScope.config.links.socialmedia.github).toBeDefined();
+    it('should have a defined github repo', function () {
+        expect($rootScope.global.gitrepo).toBeDefined();
     });
 
     it('should have a defined title', function () {

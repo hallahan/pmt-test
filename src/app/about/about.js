@@ -21,7 +21,9 @@ angular.module('pmtViewer.about', [
     });
 })
 
-.controller('AboutCtrl', function AboutCtrl($scope, $rootScope) {
+.controller('AboutCtrl', function AboutCtrl($scope, $rootScope, config, global) {
+    $rootScope.config = config;  // add the config constat to the rootScope variable
+    $rootScope.global = global;  // add the global constat to the rootScope variable   
     
     $scope.getInfo = function () {
         if ($rootScope.config.theme.alias) {
