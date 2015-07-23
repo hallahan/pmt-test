@@ -1,6 +1,6 @@
 # [pmt-test](http://shawnaparadee.github.com/pmt-test) [![Build Status](https://travis-ci.org/shawnaparadee/pmt-test.svg?branch=master)](https://travis-ci.org/shawnaparadee/pmt-test)
 
-An kickstarter for an [AngularJS](http://angularjs.org) PMT project.
+An [AngularJS](http://angularjs.org) productized project prototype
 
 ***
 
@@ -23,49 +23,33 @@ Finally, open `file:///path/to/pmt-test/build/index.html` in your browser.
 
 At a high level, the structure looks roughly like this:
 
-```
-pmt-test/
-  |- grunt-tasks/
-  |- karma/
-  |- src/
-  |  |- app/
-  |  |  |- <app logic>
-  |  |- assets/
-  |  |  |- <static files>
-  |  |- common/
-  |  |  |- <reusable code>
-  |  |- less/
-  |  |  |- main.less
-  |- vendor/
-  |  |- angular-bootstrap/
-  |  |- bootstrap/
-  |  |- placeholders/
-  |- .bowerrc
-  |- bower.json
-  |- build.config.js
-  |- Gruntfile.js
-  |- module.prefix
-  |- module.suffix
-  |- package.json
-```
+* pmt-test
+  * bin
+  * build
+  * karma
+  * node_modules
+  * src
+  * vendor
+  * .bowerrc
+  * .travis.yml
+  * app.config.js
+  * bower.json
+  * build.config.js
 
 What follows is a brief description of each entry, but most directories contain
-their own `README.md` file with additional documentation, so browse around to
-learn more.
+their own `README.md` file with additional documentation.
 
 - `karma/` - test configuration.
 - `src/` - our application sources. [Read more &raquo;](src/README.md)
 - `vendor/` - third-party libraries. [Bower](http://bower.io) will install
   packages here. Anything added to this directory will need to be manually added
-  to `build.config.js` and `karma/karma-unit.js` to be picked up by the build
-  system.
+  to `build.config.js`.
 - `.bowerrc` - the Bower configuration file. This tells Bower to install
   components into the `vendor/` directory.
 - `bower.json` - this is our project configuration for Bower and it contains the
   list of Bower dependencies we need.
-- `build.config.js` - our customizable build settings; see "The Build System"
-  below.
-- `Gruntfile.js` - our build script; see "The Build System" below.
+- `build.config.js` - our customizable build settings.
+- `Gruntfile.js` - our build script.
 - `module.prefix` and `module.suffix` - our compiled application script is
   wrapped in these, which by default are used to place the application inside a
   self-executing anonymous function to ensure no clashes with other libraries.
