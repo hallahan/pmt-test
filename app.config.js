@@ -41,7 +41,7 @@ module.exports = {
                     },
                     about: {
                         info: {
-                            enable: true
+                            enable: false
                         },
                         map: {
                             enable: true,
