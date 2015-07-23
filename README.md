@@ -29,14 +29,14 @@ At a high level, the structure looks roughly like this:
 * **karma** - test configuration.
 * **node_modules** - node puts required modules here.
 * **src** - the application.
-  * **app** - the main application source files.
+  * **app** - the main application source files. [Read more](src/app/README.md)
     * **about** - the about page.
       * **info** - the customizable section.
       * **less** - the less files.
       * **about.js** - the controller.
       * **about.spec.js** - the test.
       * **about.tpl.html** - the template.
-    * **login** - the login page.
+    * **login** - the login page. [Read more](src/app/login/README.md)
       * **less** - theless files.
       * **login.js** - the controller.
       * **login.spec.js** - the test.

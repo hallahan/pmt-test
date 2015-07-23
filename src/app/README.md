@@ -10,8 +10,8 @@
       * **about.js** - the controller.
       * **about.spec.js** - the test.
       * **about.tpl.html** - the template.
-    * **login** - the login page.
-      * **less** - theless files.
+    * **login** - the login page. [Read more](login/README.md)
+      * **less** - the less files.
       * **login.js** - the controller.
       * **login.spec.js** - the test.
       * **login.tpl.html** - the template.
@@ -55,40 +55,6 @@ angular.module('pmtViewer', [
 
 ])
 
-```
-
-With app modules broken down in this way, all routing is performed by the
-submodules we include, as that is where our app's functionality is really
-defined.  So all we need to do in `app.js` is specify a default route to follow,
-which route of course is defined in a submodule. In this case, our `login` module
-is where we want to start, which has a defined route for `/login` in
-`src/app/login/login.js`.
-
-```js
-.config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
-  $urlRouterProvider.otherwise( '/login' );
-})
-```
-
-Use the main applications run method to execute any code after services
-have been instantiated.
-
-```js
-.run( function run () {
-})
-```
-
-And then we define our main application controller. This is a good place for logic
-not specific to the template or route, such as menu logic or page title wiring.
-
-```js
-.controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
-  $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-    if ( angular.isDefined( toState.data.pageTitle ) ) {
-      $scope.pageTitle = toState.data.pageTitle + ' | pmtViewer' ;
-    }
-  });
-})
 ```
 
 ## `config.js`
