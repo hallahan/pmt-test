@@ -1,4 +1,5 @@
 # The `src/assets` Directory
 
-There's really not much to say here. Every file in this directory is recursively transferred to `dist/assets/`.
+This directory is for static information, like images and fonts. Every file in this 
+directory is recursively transferred to `dist/assets/` on build.
 

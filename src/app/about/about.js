@@ -2,8 +2,6 @@ angular.module('pmtViewer.about', [
     'ui.router',
     'placeholders',
     'ui.bootstrap',
-    'leaflet-directive',
-    'chart.js',
     'pmtViewer.about.info.bmgf',
     'pmtViewer.about.info.spatialdev'
 ])
