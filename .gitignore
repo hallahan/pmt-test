@@ -3,7 +3,7 @@
 build/
 bin/
 node_modules/
-
+vendor/
 ############## Visual Studio Stuff ###############
 *.tmp
 .ntvs_analysis.dat
