@@ -18,3 +18,5 @@ src/.ntvs_analysis.dat
 ./src/*.sln
 ./src/*.njsproj
 ./src/.ntvs_analysis.dat
+
+.idea/
