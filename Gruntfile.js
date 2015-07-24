@@ -309,24 +309,6 @@ module.exports = function (grunt) {
         },
 
         /**
-         * `coffeelint` does the same as `jshint`, but for CoffeeScript.
-         * CoffeeScript is not the default in ngBoilerplate, so we're just using
-         * the defaults here.
-         */
-        coffeelint: {
-            src: {
-                files: {
-                    src: ['<%= app_files.coffee %>']
-                }
-            },
-            test: {
-                files: {
-                    src: ['<%= app_files.coffeeunit %>']
-                }
-            }
-        },
-
-        /**
          * HTML2JS is a Grunt plugin that takes all of your template files and
          * places them into JavaScript files as strings that are added to
          * AngularJS's template cache. This means that the templates too become
