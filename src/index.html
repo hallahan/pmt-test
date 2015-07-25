@@ -66,7 +66,22 @@
                     <i class="fa fa-github-alt"></i>
                     Github Repo
                 </a>
-            </li>         
+            </li>
+              <li ui-sref-active="active">
+                  <a href ui-sref="template1">
+                      Template 1
+                  </a>
+              </li>
+              <li ui-sref-active="active">
+                  <a href ui-sref="template2">
+                      Template 2
+                  </a>
+              </li>
+              <li ui-sref-active="active">
+                  <a href ui-sref="template3">
+                      Template 3
+                  </a>
+              </li>
           </ul>
         </div>
       </div>
@@ -98,5 +113,21 @@
         </div>
       </div>
     </footer>
+
+    <script type="text/ng-template" id="template1.html">
+        <p>This is template 1</p>
+        <p>{{something}}</p>
+    </script>
+
+    <script type="text/ng-template" id="template2.html">
+        <p>This is template 2</p>
+        <p>{{something}}</p>
+    </script>
+
+    <script type="text/ng-template" id="template3.html">
+        <p>This is template 3</p>
+        <p>{{something}}</p>
+    </script>
+
   </body>
 </html>
