@@ -18,11 +18,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-conventional-changelog');
     grunt.loadNpmTasks('grunt-bump');
-    grunt.loadNpmTasks('grunt-coffeelint');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-ng-constant');
@@ -454,17 +452,6 @@ module.exports = function (grunt) {
             },
 
             /**
-             * When our CoffeeScript source files change, we want to run lint them and
-             * run our unit tests.
-             */
-            coffeesrc: {
-                files: [
-                  '<%= app_files.coffee %>'
-                ],
-                tasks: ['coffeelint:src', 'coffee:source', 'karma:unit:run', 'copy:build_appjs']
-            },
-
-            /**
              * When assets are changed, copy them. Note that this will *not* copy new
              * files, so this is probably not very useful.
              */
@@ -514,20 +501,6 @@ module.exports = function (grunt) {
                 options: {
                     livereload: false
                 }
-            },
-
-            /**
-             * When a CoffeeScript unit test file changes, we only want to lint it and
-             * run the unit tests. We don't want to do any live reloading.
-             */
-            coffeeunit: {
-                files: [
-                  '<%= app_files.coffeeunit %>'
-                ],
-                tasks: ['coffeelint:test', 'karma:unit:run'],
-                options: {
-                    livereload: false
-                }
             }
         }
     };
@@ -554,7 +527,7 @@ module.exports = function (grunt) {
      * The `build` task gets your app ready to run for development and testing.
      */
     grunt.registerTask('build', [
-      'clean', 'ngconstant:'+ theme, 'html2js', 'jshint', 'coffeelint', 'coffee', 'less:build',
+      'clean', 'ngconstant:'+ theme, 'html2js', 'jshint', 'less:build',
       'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
       'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_vendorcss', 'index:build', 'karmaconfig',
       'karma:continuous'
