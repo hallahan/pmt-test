@@ -398,7 +398,7 @@ module.exports = function (grunt) {
                     parsePattern: /\[\[\s?([\.\-\w]*)\s?\]\]/g
                 },
                 files: {
-                    'build/index2.html': 'build/index.html'
+                    'build/index.html': 'build/index.html'
                 }
             }
         },
