@@ -395,6 +395,7 @@ module.exports = function (grunt) {
         bake: {
             build: {
                 options: {
+                    // [[escape]] to prevent overriding angular {{escape}}
                     parsePattern: /\[\[\s?([\.\-\w]*)\s?\]\]/g
                 },
                 files: {
@@ -571,6 +572,15 @@ module.exports = function (grunt) {
         });
     }
 
+    /**
+     * A utility function to get all of the template files
+     */
+    function filterForTPL(files) {
+        return files.filter(function (file) {
+            return file.match(/\.tpl.html$/);
+        });
+    }
+
     /** 
      * The index.html template includes the stylesheet and javascript sources
      * based on dynamic names calculated in this Gruntfile. This task assembles
@@ -585,6 +595,10 @@ module.exports = function (grunt) {
         var cssFiles = filterForCSS(this.filesSrc).map(function (file) {
             return file.replace(dirRE, '');
         });
+        var tplFiles = filterForTPL(this.filesSrc).map(function (file) {
+            return file.replace(dirRE, '');
+        });
+        grunt.log.write('DEBUG: ' + JSON.stringify(tplFiles));
 
         grunt.file.copy('src/index.html', this.data.dir + '/index.html', {
             process: function (contents, path) {
