@@ -25,6 +25,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-ng-constant');
     grunt.loadNpmTasks('grunt-html2js');
+    grunt.loadNpmTasks( "grunt-bake" );
 
     /**
      * Load in our build configuration file.
@@ -391,6 +392,14 @@ module.exports = function (grunt) {
             }
         },
 
+        bake: {
+            build: {
+                files: {
+                    'build/index2.html': 'build/index.html'
+                }
+            }
+        },
+
         /**
          * This task compiles the karma template so that changes to its file array
          * don't have to be managed manually.
@@ -529,7 +538,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
       'clean', 'ngconstant:'+ theme, 'html2js', 'jshint', 'less:build',
       'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
-      'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_vendorcss', 'index:build', 'karmaconfig',
+      'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_vendorcss', 'index:build', 'bake:build', 'karmaconfig',
       'karma:continuous'
     ]);
 
