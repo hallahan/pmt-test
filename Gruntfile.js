@@ -394,6 +394,9 @@ module.exports = function (grunt) {
 
         bake: {
             build: {
+                options: {
+                    parsePattern: /\[\[\s?([\.\-\w]*)\s?\]\]/g
+                },
                 files: {
                     'build/index2.html': 'build/index.html'
                 }
