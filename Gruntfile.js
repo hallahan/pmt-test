@@ -162,6 +162,16 @@ module.exports = function (grunt) {
                   }
                 ]
             },
+            build_tpl: {
+                files: [
+                    {
+                        src: ['<%= app_files.tpl %>'],
+                        dest: '<%= build_dir %>/',
+                        cwd: '.',
+                        expand: true
+                    }
+                ]
+            },
             compile_assets: {
                 files: [
                   {
@@ -542,7 +552,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
       'clean', 'ngconstant:'+ theme, 'html2js', 'jshint', 'less:build',
       'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
-      'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_vendorcss', 'index:build', 'bake:build', 'karmaconfig',
+      'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_vendorcss', 'copy:build_tpl', 'index:build', 'bake:build', 'karmaconfig',
       'karma:continuous'
     ]);
 
@@ -598,7 +608,7 @@ module.exports = function (grunt) {
         var tplFiles = filterForTPL(this.filesSrc).map(function (file) {
             return file.replace(dirRE, '');
         });
-        grunt.log.write('DEBUG: ' + JSON.stringify(tplFiles));
+        grunt.log.write('DEBUG: ' + JSON.stringify(this.files));
 
         grunt.file.copy('src/index.html', this.data.dir + '/index.html', {
             process: function (contents, path) {
