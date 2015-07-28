@@ -1,6 +1,4 @@
 angular.module('pmtViewer', [
-    'templates-app', // include template compilations from HTML2JS
-    'templates-common', // include template compilations from HTML2JS
     'leaflet-directive', // include common directive
     'chart.js', // include common directive
     'pmtViewer.login', // include our sub-module

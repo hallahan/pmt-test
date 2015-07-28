@@ -644,8 +644,7 @@ module.exports = function (grunt) {
         for (var i = 0, len = tplFiles.length; i < len; i++) {
             var tpl = {};
             var path = tpl.path = tplFiles[i];
-            var pathParts = path.split('/');
-            tpl.name = pathParts[pathParts.length -2] + '/' + pathParts[pathParts.length -1];
+            tpl.name = path.replace('src/app/','');
             tpls.push(tpl);
         }
 

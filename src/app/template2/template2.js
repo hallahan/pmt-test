@@ -15,7 +15,7 @@ angular.module('pmtViewer.template2', [
         views: {
           "main": {
             controller: 'template2Ctrl',
-            templateUrl: 'template2.html'
+            templateUrl: 'template2/template2.tpl.html'
           }
         },
         data: { pageTitle: 'Template 2' }
