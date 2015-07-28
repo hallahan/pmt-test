@@ -24,7 +24,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-ng-constant');
-    grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks( "grunt-bake" );
 
     /**
@@ -207,8 +206,6 @@ module.exports = function (grunt) {
                   '<%= vendor_files.js %>',
                   'module.prefix',
                   '<%= build_dir %>/src/**/*.js',
-                  '<%= html2js.app.dest %>',
-                  '<%= html2js.common.dest %>',
                   'module.suffix'
                 ],
                 dest: '<%= compile_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.js'
@@ -308,36 +305,6 @@ module.exports = function (grunt) {
         },
 
         /**
-         * HTML2JS is a Grunt plugin that takes all of your template files and
-         * places them into JavaScript files as strings that are added to
-         * AngularJS's template cache. This means that the templates too become
-         * part of the initial payload as one JavaScript file. Neat!
-         */
-        html2js: {
-            /**
-             * These are the templates from `src/app`.
-             */
-            app: {
-                options: {
-                    base: 'src/app'
-                },
-                src: ['<%= app_files.atpl %>'],
-                dest: '<%= build_dir %>/templates-app.js'
-            },
-
-            /**
-             * These are the templates from `src/common`.
-             */
-            common: {
-                options: {
-                    base: 'src/common'
-                },
-                src: ['<%= app_files.ctpl %>'],
-                dest: '<%= build_dir %>/templates-common.js'
-            }
-        },
-
-        /**
          * The Karma configurations.
          */
         karma: {
@@ -371,8 +338,6 @@ module.exports = function (grunt) {
                   '<%= vendor_files.js %>',
                   '<%= app_files.tpl %>',
                   '<%= build_dir %>/src/**/*.js',
-                  '<%= html2js.common.dest %>',
-                  '<%= html2js.app.dest %>',
                   '<%= vendor_files.css %>',
                   '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
                 ]
@@ -414,8 +379,6 @@ module.exports = function (grunt) {
                 dir: '<%= build_dir %>',
                 src: [
                   '<%= vendor_files.js %>',
-                  '<%= html2js.app.dest %>',
-                  '<%= html2js.common.dest %>',
                   '<%= test_files.js %>'
                 ]
             }
@@ -492,7 +455,7 @@ module.exports = function (grunt) {
                   '<%= app_files.atpl %>',
                   '<%= app_files.ctpl %>'
                 ],
-                tasks: ['html2js']
+                tasks: ['index:build', 'bake:build']
             },
 
             /**
@@ -541,7 +504,7 @@ module.exports = function (grunt) {
      * The `build` task gets your app ready to run for development and testing.
      */
     grunt.registerTask('build', [
-      'clean', 'ngconstant:'+ theme, 'html2js', 'jshint', 'less:build',
+      'clean', 'ngconstant:'+ theme, 'jshint', 'less:build',
       'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
       'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_vendorcss', 'index:build', 'bake:build', 'karmaconfig',
       'karma:continuous'
