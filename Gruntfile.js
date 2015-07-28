@@ -637,7 +637,7 @@ module.exports = function (grunt) {
         });
         var cssFiles = filterForCSS(this.filesSrc).map(function (file) {
             return file.replace(dirRE, '');
-        });
+        });       
 
         grunt.file.copy('src/index.html', this.data.dir + '/index.html', {
             process: function (contents, path) {
