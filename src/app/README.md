@@ -32,10 +32,7 @@ modules from `src/app` that are need. Only the top-level module needs to be load
 For example in the about page there is a customizable section called info. The info module
 is not required in `app.js` because it is pulled in by the about module. So only the about 
 module (the highest level) is require, as it will ensure all its required submodules are 
-included. 
-
-Included in the `app.js` are the template requires for the template modules that are generated
-during the build using HTML2JS (see build).
+included.
 
 Any modules from `src/common` that are required by the app
 submodules should also be included to ensure app-wide dependencies.
@@ -44,8 +41,6 @@ submodules should also be included to ensure app-wide dependencies.
 
 angular.module('pmtViewer', [
 
-    'templates-app', // include template compilations from HTML2JS
-    'templates-common', // include template compilations from HTML2JS
     'leaflet-directive', // include common directive
     'chart.js', // include common directive
     'pmtViewer.login', // include our sub-module

@@ -18,15 +18,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-conventional-changelog');
     grunt.loadNpmTasks('grunt-bump');
-    grunt.loadNpmTasks('grunt-coffeelint');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-ng-constant');
-    grunt.loadNpmTasks('grunt-html2js');
+    grunt.loadNpmTasks( "grunt-bake" );
 
     /**
      * Load in our build configuration file.
@@ -208,31 +206,9 @@ module.exports = function (grunt) {
                   '<%= vendor_files.js %>',
                   'module.prefix',
                   '<%= build_dir %>/src/**/*.js',
-                  '<%= html2js.app.dest %>',
-                  '<%= html2js.common.dest %>',
                   'module.suffix'
                 ],
                 dest: '<%= compile_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.js'
-            }
-        },
-
-        /**
-         * `grunt coffee` compiles the CoffeeScript sources. To work well with the
-         * rest of the build, we have a separate compilation task for sources and
-         * specs so they can go to different places. For example, we need the
-         * sources to live with the rest of the copied JavaScript so we can include
-         * it in the final build, but we don't want to include our specs there.
-         */
-        coffee: {
-            source: {
-                options: {
-                    bare: true
-                },
-                expand: true,
-                cwd: '.',
-                src: ['<%= app_files.coffee %>'],
-                dest: '<%= build_dir %>',
-                ext: '.js'
             }
         },
 
@@ -329,54 +305,6 @@ module.exports = function (grunt) {
         },
 
         /**
-         * `coffeelint` does the same as `jshint`, but for CoffeeScript.
-         * CoffeeScript is not the default in ngBoilerplate, so we're just using
-         * the defaults here.
-         */
-        coffeelint: {
-            src: {
-                files: {
-                    src: ['<%= app_files.coffee %>']
-                }
-            },
-            test: {
-                files: {
-                    src: ['<%= app_files.coffeeunit %>']
-                }
-            }
-        },
-
-        /**
-         * HTML2JS is a Grunt plugin that takes all of your template files and
-         * places them into JavaScript files as strings that are added to
-         * AngularJS's template cache. This means that the templates too become
-         * part of the initial payload as one JavaScript file. Neat!
-         */
-        html2js: {
-            /**
-             * These are the templates from `src/app`.
-             */
-            app: {
-                options: {
-                    base: 'src/app'
-                },
-                src: ['<%= app_files.atpl %>'],
-                dest: '<%= build_dir %>/templates-app.js'
-            },
-
-            /**
-             * These are the templates from `src/common`.
-             */
-            common: {
-                options: {
-                    base: 'src/common'
-                },
-                src: ['<%= app_files.ctpl %>'],
-                dest: '<%= build_dir %>/templates-common.js'
-            }
-        },
-
-        /**
          * The Karma configurations.
          */
         karma: {
@@ -408,9 +336,8 @@ module.exports = function (grunt) {
                 dir: '<%= build_dir %>',
                 src: [
                   '<%= vendor_files.js %>',
+                  '<%= app_files.tpl %>',
                   '<%= build_dir %>/src/**/*.js',
-                  '<%= html2js.common.dest %>',
-                  '<%= html2js.app.dest %>',
                   '<%= vendor_files.css %>',
                   '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
                 ]
@@ -425,9 +352,31 @@ module.exports = function (grunt) {
                 dir: '<%= compile_dir %>',
                 src: [
                   '<%= concat.compile_js.dest %>',
+                  '<%= app_files.tpl %>',
                   '<%= vendor_files.css %>',
                   '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
                 ]
+            }
+        },
+
+        bake: {
+            build: {
+                options: {
+                    // [[escape]] to prevent overriding angular {{escape}}
+                    parsePattern: /\[\[\s?([\.\-\w]*)\s?\]\]/g
+                },
+                files: {
+                    'build/index.html': 'build/index.html'
+                }
+            },
+            compile: {
+                options: {
+                    // [[escape]] to prevent overriding angular {{escape}}
+                    parsePattern: /\[\[\s?([\.\-\w]*)\s?\]\]/g
+                },
+                files: {
+                    'bin/index.html': 'bin/index.html'
+                }
             }
         },
 
@@ -440,8 +389,6 @@ module.exports = function (grunt) {
                 dir: '<%= build_dir %>',
                 src: [
                   '<%= vendor_files.js %>',
-                  '<%= html2js.app.dest %>',
-                  '<%= html2js.common.dest %>',
                   '<%= test_files.js %>'
                 ]
             }
@@ -492,17 +439,6 @@ module.exports = function (grunt) {
             },
 
             /**
-             * When our CoffeeScript source files change, we want to run lint them and
-             * run our unit tests.
-             */
-            coffeesrc: {
-                files: [
-                  '<%= app_files.coffee %>'
-                ],
-                tasks: ['coffeelint:src', 'coffee:source', 'karma:unit:run', 'copy:build_appjs']
-            },
-
-            /**
              * When assets are changed, copy them. Note that this will *not* copy new
              * files, so this is probably not very useful.
              */
@@ -529,7 +465,7 @@ module.exports = function (grunt) {
                   '<%= app_files.atpl %>',
                   '<%= app_files.ctpl %>'
                 ],
-                tasks: ['html2js']
+                tasks: ['index:build', 'bake:build']
             },
 
             /**
@@ -549,20 +485,6 @@ module.exports = function (grunt) {
                   '<%= app_files.jsunit %>'
                 ],
                 tasks: ['jshint:test', 'karma:unit:run'],
-                options: {
-                    livereload: false
-                }
-            },
-
-            /**
-             * When a CoffeeScript unit test file changes, we only want to lint it and
-             * run the unit tests. We don't want to do any live reloading.
-             */
-            coffeeunit: {
-                files: [
-                  '<%= app_files.coffeeunit %>'
-                ],
-                tasks: ['coffeelint:test', 'karma:unit:run'],
                 options: {
                     livereload: false
                 }
@@ -592,9 +514,9 @@ module.exports = function (grunt) {
      * The `build` task gets your app ready to run for development and testing.
      */
     grunt.registerTask('build', [
-      'clean', 'ngconstant:'+ theme, 'html2js', 'jshint', 'coffeelint', 'coffee', 'less:build',
+      'clean', 'ngconstant:'+ theme, 'jshint', 'less:build',
       'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
-      'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_vendorcss', 'index:build', 'karmaconfig',
+      'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_vendorcss', 'index:build', 'bake:build', 'karmaconfig',
       'karma:continuous'
     ]);
 
@@ -603,7 +525,7 @@ module.exports = function (grunt) {
      * minifying your code.
      */
     grunt.registerTask('compile', [
-      'less:compile', 'copy:compile_assets', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile'
+      'less:compile', 'copy:compile_assets', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile', 'bake:compile'
     ]);
 
     /**
@@ -624,6 +546,49 @@ module.exports = function (grunt) {
         });
     }
 
+    /**
+     * A utility function to get all of the template files
+     */
+    function filterForTPL(files) {
+        return files.filter(function (file) {
+            return file.match(/\.tpl.html$/);
+        });
+    }
+
+    /**
+     * Takes the list of all of the template files and returns
+     * only global template files and the template files we
+     * need for the set theme.
+     *
+     * @param list of template files
+     */
+    function filterTPLsForTheme(tplFiles) {
+        var otherThemes = [];
+
+        // gets all of the themes that arent options or the current theme
+        for (var obj in appConfig.ngconstant) {
+            if (obj === 'options' || obj === theme) {
+                continue;
+            }
+            otherThemes.push(obj);
+        }
+
+        // returns a filtered array containing only template files without
+        // the other theme names
+        return tplFiles.filter(function (file) {
+            for (var i = 0; i < otherThemes.length; i++) {
+                var otherTheme = otherThemes[i];
+                // if the file has the theme name in it
+                if (file.indexOf(otherTheme) > -1) {
+                    // we want to filter it out
+                    return false;
+                }
+            }
+            // no other theme name in given file
+            return true;
+        });
+    }
+
     /** 
      * The index.html template includes the stylesheet and javascript sources
      * based on dynamic names calculated in this Gruntfile. This task assembles
@@ -637,7 +602,24 @@ module.exports = function (grunt) {
         });
         var cssFiles = filterForCSS(this.filesSrc).map(function (file) {
             return file.replace(dirRE, '');
-        });       
+        });
+        var tplFiles = filterForTPL(this.filesSrc).map(function (file) {
+            return file.replace(dirRE, '');
+        });
+        tplFiles = filterTPLsForTheme(tplFiles);
+
+        /**
+         * We need to know the template file paths and names,
+         * because we use the name of the template file for the id
+         * of the script tag, and the path to get the contents for bake.
+         */
+        var tpls = [];
+        for (var i = 0, len = tplFiles.length; i < len; i++) {
+            var tpl = {};
+            var path = tpl.path = tplFiles[i];
+            tpl.name = path.replace('src/app/','');
+            tpls.push(tpl);
+        }
 
         grunt.file.copy('src/index.html', this.data.dir + '/index.html', {
             process: function (contents, path) {
@@ -645,6 +627,7 @@ module.exports = function (grunt) {
                     data: {
                         scripts: jsFiles,
                         styles: cssFiles,
+                        tpls: tpls,
                         version: grunt.config('pkg.version')
                     }
                 });
