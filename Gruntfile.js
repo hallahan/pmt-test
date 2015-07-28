@@ -352,6 +352,7 @@ module.exports = function (grunt) {
                 dir: '<%= compile_dir %>',
                 src: [
                   '<%= concat.compile_js.dest %>',
+                  '<%= app_files.tpl %>',
                   '<%= vendor_files.css %>',
                   '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
                 ]
@@ -366,6 +367,15 @@ module.exports = function (grunt) {
                 },
                 files: {
                     'build/index.html': 'build/index.html'
+                }
+            },
+            compile: {
+                options: {
+                    // [[escape]] to prevent overriding angular {{escape}}
+                    parsePattern: /\[\[\s?([\.\-\w]*)\s?\]\]/g
+                },
+                files: {
+                    'bin/index.html': 'bin/index.html'
                 }
             }
         },
@@ -515,7 +525,7 @@ module.exports = function (grunt) {
      * minifying your code.
      */
     grunt.registerTask('compile', [
-      'less:compile', 'copy:compile_assets', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile'
+      'less:compile', 'copy:compile_assets', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile', 'bake:compile'
     ]);
 
     /**
