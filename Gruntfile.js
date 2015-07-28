@@ -582,6 +582,40 @@ module.exports = function (grunt) {
         });
     }
 
+    /**
+     * Takes the list of all of the template files and returns
+     * only global template files and the template files we
+     * need for the set theme.
+     *
+     * @param files - list of template files
+     */
+    function filterTPLsForTheme(tplFiles) {
+        var otherThemes = [];
+
+        // gets all of the themes that arent options or the current theme
+        for (var obj in appConfig.ngconstant) {
+            if (obj === 'options' || obj === theme) {
+                continue;
+            }
+            otherThemes.push(obj);
+        }
+
+        // returns a filtered array containing only template files without
+        // the other theme names
+        return tplFiles.filter(function (file) {
+            for (var i = 0; i < otherThemes.length; i++) {
+                var otherTheme = otherThemes[i];
+                // if the file has the theme name in it
+                if (file.indexOf(otherTheme) > -1) {
+                    // we want to filter it out
+                    return false;
+                }
+            }
+            // no other theme name in given file
+            return true;
+        });
+    }
+
     /** 
      * The index.html template includes the stylesheet and javascript sources
      * based on dynamic names calculated in this Gruntfile. This task assembles
@@ -599,6 +633,7 @@ module.exports = function (grunt) {
         var tplFiles = filterForTPL(this.filesSrc).map(function (file) {
             return file.replace(dirRE, '');
         });
+        tplFiles = filterTPLsForTheme(tplFiles);
 
         /**
          * We need to know the template file paths and names,
