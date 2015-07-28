@@ -587,7 +587,7 @@ module.exports = function (grunt) {
      * only global template files and the template files we
      * need for the set theme.
      *
-     * @param files - list of template files
+     * @param list of template files
      */
     function filterTPLsForTheme(tplFiles) {
         var otherThemes = [];
@@ -645,7 +645,7 @@ module.exports = function (grunt) {
             var tpl = {};
             var path = tpl.path = tplFiles[i];
             var pathParts = path.split('/');
-            tpl.name = pathParts[pathParts.length -1];
+            tpl.name = pathParts[pathParts.length -2] + '/' + pathParts[pathParts.length -1];
             tpls.push(tpl);
         }
 
