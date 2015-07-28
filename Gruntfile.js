@@ -379,6 +379,7 @@ module.exports = function (grunt) {
                 dir: '<%= build_dir %>',
                 src: [
                   '<%= vendor_files.js %>',
+                  '<%= app_files.tpl %>',
                   '<%= build_dir %>/src/**/*.js',
                   '<%= html2js.common.dest %>',
                   '<%= html2js.app.dest %>',
@@ -608,7 +609,20 @@ module.exports = function (grunt) {
         var tplFiles = filterForTPL(this.filesSrc).map(function (file) {
             return file.replace(dirRE, '');
         });
-        grunt.log.write('DEBUG: ' + JSON.stringify(this.files));
+
+        /**
+         * We need to know the template file paths and names,
+         * because we use the name of the template file for the id
+         * of the script tag, and the path to get the contents for bake.
+         */
+        var tpls = [];
+        for (var i = 0, len = tplFiles.length; i < len; i++) {
+            var tpl = {};
+            var path = tpl.path = tplFiles[i];
+            var pathParts = path.split('/');
+            tpl.name = pathParts[pathParts.length -1];
+            tpls.push(tpl);
+        }
 
         grunt.file.copy('src/index.html', this.data.dir + '/index.html', {
             process: function (contents, path) {
@@ -616,6 +630,7 @@ module.exports = function (grunt) {
                     data: {
                         scripts: jsFiles,
                         styles: cssFiles,
+                        tpls: tpls,
                         version: grunt.config('pkg.version')
                     }
                 });

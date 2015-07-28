@@ -114,17 +114,14 @@
       </div>
     </footer>
 
-    <script type="text/ng-template" id="template1.html">
-    <!--(bake ../src/app/template1/template1.tpl.html)-->
-    </script>
 
-    <script type="text/ng-template" id="template2.html">
-    <!--(bake ../src/app/template2/template2.tpl.html)-->
+    <!-- Templates (*.tpl.html files) -->
+    <% tpls.forEach( function ( obj ) { %>
+    <script type="text/ng-template" id="<%= obj.name %>">
+    <!--(bake /<%= obj.path %>)-->
     </script>
+    <% }); %>
 
-    <script type="text/ng-template" id="template3.html">
-    <!--(bake ../src/app/template3/template3.tpl.html)-->
-    </script>
 
   </body>
 </html>
