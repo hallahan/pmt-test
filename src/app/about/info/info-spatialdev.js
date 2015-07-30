@@ -1,10 +1,4 @@
-﻿angular.module('pmtViewer.about.info.spatialdev', [
-    'ui.router',
-    'placeholders',
-    'ui.bootstrap'
-])
-
-.controller('InfoSpatialdevCtrl', function InfoSpatialdevCtrl($scope, $rootScope) {
+﻿angular.module('pmtViewer.about').controller('InfoSpatialdevCtrl', function($scope, $rootScope) {
     $scope.myInterval = 3000;
     $scope.slides = [];
     $scope.slides.push({ image: 'http://spatialdev.com/img/projects/mappr_02.png', text: 'Mappr' });

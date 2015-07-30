@@ -1,9 +1,7 @@
 angular.module('pmtViewer.about', [
     'ui.router',
     'placeholders',
-    'ui.bootstrap',
-    'pmtViewer.about.info.bmgf',
-    'pmtViewer.about.info.spatialdev'
+    'ui.bootstrap'
 ])
 
 .config(function config($stateProvider) {
@@ -19,7 +17,7 @@ angular.module('pmtViewer.about', [
     });
 })
 
-.controller('AboutCtrl', function AboutCtrl($scope, $rootScope, config, global) {
+.controller('AboutCtrl', function($scope, $rootScope, config, global) {
     $rootScope.config = config;  // add the config constat to the rootScope variable
     $rootScope.global = global;  // add the global constat to the rootScope variable   
     

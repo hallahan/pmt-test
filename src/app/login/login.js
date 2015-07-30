@@ -39,7 +39,7 @@ angular.module('pmtViewer.login', [
 /**
  * And of course we define a controller for our route.
  */
-.controller('LoginCtrl', function LoginController($scope, $http, $rootScope, config, global) {
+.controller('LoginCtrl', function($scope, $http, $rootScope, config, global) {
     $rootScope.config = config;  // add the config constat to the rootScope variable
     $rootScope.global = global;  // add the global constat to the rootScope variable   
 });

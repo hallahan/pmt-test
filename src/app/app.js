@@ -18,7 +18,7 @@ angular.module('pmtViewer', [
 })
 
 // include the config & global constants from the config module
-.controller('AppCtrl', function AppCtrl($scope, $location, $rootScope, config, global) {
+.controller('AppCtrl', function($scope, $location, $rootScope, config, global) {
     $scope.config = config;  // add the config constat to the rootScope variable
     $scope.global = global;  // add the global constat to the rootScope variable
 

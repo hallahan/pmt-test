@@ -25,7 +25,7 @@ angular.module('pmtViewer.template1', [
 /**
  * And of course we define a controller for our route.
  */
-    .controller('Template1Ctrl', function LoginController($scope, $http, $rootScope, config, global) {
+    .controller('Template1Ctrl', function($scope, $http, $rootScope, config, global) {
       $rootScope.config = config;  // add the config constat to the rootScope variable
       $rootScope.global = global;  // add the global constat to the rootScope variable
       $scope.something = "Hi, I'm Template 1 something scope variable!";
