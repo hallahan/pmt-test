@@ -12,6 +12,7 @@ module.exports = function (grunt) {
      * Load required Grunt tasks. These are installed based on the versions listed
      * in `package.json` when you do `npm install` in this directory.
      */
+    grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -24,7 +25,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-ng-constant');
-    grunt.loadNpmTasks( "grunt-bake" );
+    grunt.loadNpmTasks('grunt-bake');
 
     /**
      * Load in our build configuration file.
@@ -93,6 +94,13 @@ module.exports = function (grunt) {
                 tagMessage: 'Version %VERSION%',
                 push: false,
                 pushTo: 'origin'
+            }
+        },
+
+        browserify: {
+            js: {
+                src: 'src/app/app.js',
+                dest: 'build/pmt.js'
             }
         },
 
@@ -515,7 +523,7 @@ module.exports = function (grunt) {
      */
     grunt.registerTask('build', [
       'clean', 'ngconstant:'+ theme, 'jshint', 'less:build',
-      'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
+      'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets', 'browserify',
       'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_vendorcss', 'index:build', 'bake:build', 'karmaconfig',
       'karma:continuous'
     ]);

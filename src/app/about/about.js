@@ -1,8 +1,4 @@
-angular.module('pmtViewer.about', [
-    'ui.router',
-    'placeholders',
-    'ui.bootstrap'
-])
+angular.module('pmtViewer')
 
 .config(function config($stateProvider) {
     $stateProvider.state('about', {
