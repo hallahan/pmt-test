@@ -345,6 +345,7 @@ module.exports = function (grunt) {
                 src: [
                   '<%= vendor_files.js %>',
                   '<%= app_files.tpl %>',
+                  '<%= build_dir %>/src/common/**/*.js',
                   '<%= vendor_files.css %>',
                   '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
                 ]
