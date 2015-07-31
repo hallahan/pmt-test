@@ -27,6 +27,7 @@ angular.module('pmtViewer', [
     });
 });
 
+require('./config.js');
 require('./about/about.js');
 require('./about/info/info-spatialdev.js');
 require('./login/login.js');

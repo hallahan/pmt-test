@@ -2,7 +2,7 @@
 describe('Controller: AboutCtrl', function () {
     var $rootScope, $scope, $controller;
     
-    beforeEach(module('pmtViewer.about'));
+    beforeEach(module('pmtViewer'));
     
     beforeEach(inject(function (_$rootScope_, _$controller_) {
         $rootScope = _$rootScope_;

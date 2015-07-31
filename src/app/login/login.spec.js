@@ -2,7 +2,7 @@
 describe('Controller: LoginCtrl', function () {
     var $rootScope, $scope, $controller;
 
-  beforeEach( module( 'pmtViewer.login' ) );
+  beforeEach( module( 'pmtViewer' ) );
     
     beforeEach(inject(function (_$rootScope_, _$controller_) {
         $rootScope = _$rootScope_;
