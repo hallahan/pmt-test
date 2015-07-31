@@ -345,7 +345,6 @@ module.exports = function (grunt) {
                 src: [
                   '<%= vendor_files.js %>',
                   '<%= app_files.tpl %>',
-                  '<%= build_dir %>/src/**/*.js',
                   '<%= vendor_files.css %>',
                   '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
                 ]
@@ -615,6 +614,9 @@ module.exports = function (grunt) {
             return file.replace(dirRE, '');
         });
         tplFiles = filterTPLsForTheme(tplFiles);
+
+        grunt.log.write('DEBUG: ' + JSON.stringify(jsFiles));
+
 
         /**
          * We need to know the template file paths and names,
